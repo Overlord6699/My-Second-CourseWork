@@ -1,0 +1,17 @@
+﻿  Enemy.cpp
+F:\Game)\Game)\Fighter.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Time.hpp: No such file or directory,
+  Game).cpp
+F:\Game)\Game)\Damage.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Vector3.hpp: No such file or directory,
+  Mover.cpp
+F:\Game)\Game)\Fighter.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Time.hpp: No such file or directory,
+  MusicMaster.cpp
+F:\Game)\Game)\MusicMaster.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/Audio/Sound.hpp: No such file or directory,
+  Player.cpp
+F:\Game)\Game)\Fighter.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Time.hpp: No such file or directory,
+  GameManager.cpp
+F:\Game)\Game)\Damage.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Vector3.hpp: No such file or directory,
+  Fighter.cpp
+F:\Game)\Game)\Fighter.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Time.hpp: No such file or directory,
+  UIMaster.cpp
+F:\Game)\Game)\Damage.h(2,10): fatal error C1083: Не удается открыть файл включение: SFML/System/Vector3.hpp: No such file or directory,
+  Создание кода...
