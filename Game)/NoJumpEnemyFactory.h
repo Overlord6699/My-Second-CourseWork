@@ -5,9 +5,9 @@
 class NoJumpEnemyFactory: public AbstractEnemyFactory
 {
 public:
-	NoJumpAnimMoveEnemy* CreateNoJumpEnemy(Texture& image,const float dist,
+	NoJumpAnimEnemy* CreateNoJumpEnemy(Texture& image,const float dist,
 		const float b, const int enemyX, const int enemyY) const 
 	{
-		return new NoJumpAnimMoveEnemy(image, dist, b, enemyX, enemyY);
+		return new NoJumpAnimEnemy(image, dist, b, enemyX, enemyY);
 	}
 };

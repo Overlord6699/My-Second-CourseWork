@@ -1,6 +1,6 @@
 #include "NoJumpAnimEnemy.h"
 
-NoJumpAnimMoveEnemy::NoJumpAnimMoveEnemy(Texture& image, const float dist,
+NoJumpAnimEnemy::NoJumpAnimEnemy(Texture& image, const float dist,
 	const float b, const int enemyX, const int enemyY)
 {
 	spawnPointX = enemyX;
@@ -23,7 +23,7 @@ NoJumpAnimMoveEnemy::NoJumpAnimMoveEnemy(Texture& image, const float dist,
 	InitBehaviour();
 }
 
-void NoJumpAnimMoveEnemy::InitBehaviour()
+void NoJumpAnimEnemy::InitBehaviour()
 {
 	animator->Set_strategy(new AnimationMove);
 	animator->Set_strategy(new AnimationAttack);

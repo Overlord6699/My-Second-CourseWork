@@ -1,4 +1,4 @@
-﻿  Game.cpp
+﻿  Player.cpp
 F:\Game)\Game)\Mover.h(9,30): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\Mover.h(9,51): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\Mover.h(11,31): warning C4305: инициализация: усечение из "double" в "const float"
@@ -11,28 +11,7 @@ F:\Game)\Game)\AnimationAttack.h(7,32): warning C4305: инициализаци�
 F:\Game)\Game)\GameManager.h(23,67): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\GameManager.h(24,37): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\GameManager.h(28,38): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(51,21): warning C4244: инициализация: преобразование "const int" в "float", возможна потеря данных
-F:\Game)\Game)\Jumper.h(11,37): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Jumper.h(13,36): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Jumper.h(14,20): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationStay.h(10,28): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationJump.h(9,30): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationSprintAttack.h(7,32): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Camera.h(7,2): warning C4091: static : пропускается слева от "Camera", когда ни одна переменная не объявлена
-  Player.cpp
-F:\Game)\Game)\Mover.h(9,30): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(9,51): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,31): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,53): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,76): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationMove.h(11,28): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Enemy.h(15,26): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AbstractNoJumpEnemy.h(18,26): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationAttack.h(7,32): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(23,67): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(24,37): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(28,38): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(51,21): warning C4244: инициализация: преобразование "const int" в "float", возможна потеря данных
+F:\Game)\Game)\GameManager.h(54,21): warning C4244: инициализация: преобразование "const int" в "float", возможна потеря данных
 F:\Game)\Game)\Jumper.h(11,37): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\Jumper.h(13,36): warning C4305: инициализация: усечение из "double" в "const float"
 F:\Game)\Game)\Jumper.h(14,20): warning C4305: инициализация: усечение из "double" в "const float"
@@ -50,65 +29,24 @@ F:\Game)\Game)\Player.cpp(35,22): warning C4244: аргумент: преобр�
               T=float
           ]
 F:\Game)\Game)\Player.cpp(40,18): warning C4305: =: усечение из "double" в "float"
-F:\Game)\Game)\Player.cpp(195,16): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+F:\Game)\Game)\Player.cpp(194,16): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
           with
           [
               T=float
           ]
-F:\Game)\Game)\Player.cpp(196,20): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+F:\Game)\Game)\Player.cpp(195,20): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
           with
           [
               T=float
           ]
-F:\Game)\Game)\Player.cpp(207,41): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+F:\Game)\Game)\Player.cpp(206,41): warning C4244: =: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-F:\Game)\Game)\Player.cpp(217,40): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+F:\Game)\Game)\Player.cpp(216,40): warning C4244: =: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-  UIMaster.cpp
-F:\Game)\Game)\Mover.h(9,30): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(9,51): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,31): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,53): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Mover.h(11,76): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationMove.h(11,28): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Enemy.h(15,26): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AbstractNoJumpEnemy.h(18,26): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationAttack.h(7,32): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(23,67): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(24,37): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(28,38): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\GameManager.h(51,21): warning C4244: инициализация: преобразование "const int" в "float", возможна потеря данных
-F:\Game)\Game)\Jumper.h(11,37): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Jumper.h(13,36): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Jumper.h(14,20): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationStay.h(10,28): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationJump.h(9,30): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\AnimationSprintAttack.h(7,32): warning C4305: инициализация: усечение из "double" в "const float"
-F:\Game)\Game)\Camera.h(7,2): warning C4091: static : пропускается слева от "Camera", когда ни одна переменная не объявлена
-F:\Game)\Game)\UIMaster.cpp(82,61): warning C4244: аргумент: преобразование "const int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-F:\Game)\Game)\UIMaster.cpp(82,40): warning C4244: аргумент: преобразование "const int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-F:\Game)\Game)\UIMaster.cpp(114,16): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(171,22): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(171,7): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(318,65): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(318,50): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(324,15): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(324,3): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(328,32): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-F:\Game)\Game)\UIMaster.cpp(328,15): warning C4244: аргумент: преобразование "const int" в "const float", возможна потеря данных
-  Создание кода...
   Game).vcxproj -> F:\Game)\x64\Debug\Game).exe

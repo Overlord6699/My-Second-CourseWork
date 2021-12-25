@@ -29,6 +29,6 @@ public:
     void Jump(const GameManager& gameManager, MusicMaster& musMaster);
     void ResetJump(GameManager& gameManager);
     void AllowJumping(GameManager& gameManager);
-    void Fall(const float time, GameManager& gameManager);
+    void CalculateFallSpeed(const float time, GameManager& gameManager);
     void ProcessVerticalOffset(const float time);
 };

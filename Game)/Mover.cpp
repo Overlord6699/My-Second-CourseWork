@@ -51,7 +51,7 @@ void Mover::SetSprintState(const bool state)
     shift = state;
 }
 
-void Mover::CheckMoveDirection()
+void Mover::CheckSprintDirection()
 {
     if (dx > MAX_SPEED && !mov)
         dx -= BRAKING_SPEED; //жмём на тормоза
@@ -67,6 +67,7 @@ void Mover::CheckMoveDirection()
 
 void Mover::Move(const float time)
 {
+    //dx - смещение
     rect.left += dx * time;
 }
 

@@ -2,6 +2,7 @@
 
 void Spawner::Spawn()
 {
+    //задаютс€ определЄнные координаты дл€ изображени€
     rect.top = spawnPointY;
     rect.left = spawnPointX;
 }

@@ -32,6 +32,31 @@ void MusicMaster::PlayFonMusic()
 	music.play();
 }
 
+sf::Sound& MusicMaster::RunSound()
+{
+	return runsound;
+}
+
+sf::Sound& MusicMaster::JumpSound()
+{
+	return jumpsound;
+}
+
+sf::Sound& MusicMaster::PunchSound()
+{
+	return punchsound;
+}
+
+sf::Sound& MusicMaster::BrokenSound()
+{
+	return brokensound;
+}
+
+sf::Sound& MusicMaster::DeathSound()
+{
+	return deathsound;
+}
+
 void MusicMaster::PauseFonMusic()
 {
 	music.pause();
@@ -46,14 +71,6 @@ void MusicMaster::PlayNeededSound(sf::Sound& mySound)
 void MusicMaster::PauseNeededSound(sf::Sound& mySound)
 {
 	mySound.pause();
-}
-
-void MusicMaster::PauseRunSound() {
-	runsound.pause();
-}
-
-void MusicMaster::PlayBrokenSound() {
-	brokensound.play();
 }
 
 void MusicMaster::InitializeMusic() {

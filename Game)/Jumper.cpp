@@ -3,8 +3,9 @@
 
 void Jumper::ProcessMultiJump(GameManager& gameManager, MusicMaster& musMaster)
 {
+    //если игрок в воздухе и способен делать несколько прыжков подряд
     if (!playerOnGround && multijump) {
-        musMaster.PlayNeededSound(musMaster.jumpsound);
+        musMaster.PlayNeededSound(musMaster.JumpSound());
 
         dy = 0;
         dy -= gameManager.jumpCooldawn;
@@ -33,8 +34,9 @@ void Jumper::ProcessFallDirection()
 
 void Jumper::Jump(const GameManager& gameManager, MusicMaster& musMaster)
 {
+    //находится ли игрок на земле
     if (playerOnGround) {
-        musMaster.PlayNeededSound(musMaster.jumpsound);
+        musMaster.PlayNeededSound(musMaster.JumpSound());
 
         dy = 0;
         dy -= gameManager.jumpCooldawn;
@@ -59,10 +61,10 @@ void Jumper::AllowJumping(GameManager& gameManager)
     }
 }
 
-void Jumper::Fall(const float time, GameManager& gameManager)
+void Jumper::CalculateFallSpeed(const float time, GameManager& gameManager)
 {
     if (dy < MAX_FREE_FALL_SPEED)
-        dy = dy + gameManager.GetFallSpeed() * time;
+        dy += gameManager.GetFallSpeed() * time;
 }
 
 void Jumper::ProcessVerticalOffset(const float time)

@@ -2,20 +2,19 @@
 
 void Map::DealDamageToBlock(const float time)
 {
-	//пускай пока урон будет = 1
-	blockHP_Temp -= 1 * time;
+	blockHP_Temp -= time;
 }
 
 void Map::DealDamageToBlockByRun(const float time)
 {
-	blockHP -= 1 * time;
+	blockHP -= time;
 }
 
 void Map::CheckBlockHealth(MusicMaster& musMaster, const int i, const int j)
 {
 	if (blockHP_Temp < 0)
 	{
-        musMaster.PlayNeededSound(musMaster.brokensound);
+        musMaster.PlayNeededSound(musMaster.BrokenSound());
         TileMap[i][j] = 'u';
 
 		blockHP_Temp = 1500;

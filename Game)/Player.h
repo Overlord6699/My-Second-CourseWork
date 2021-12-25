@@ -27,6 +27,7 @@ private:
 
     void CheckMapBounds();
     void InitBehaviour();
+    bool CheckDistance(const FloatRect& enemyRect, const bool checkForPlayer);
 public:  
     bool IsAnimated();
 

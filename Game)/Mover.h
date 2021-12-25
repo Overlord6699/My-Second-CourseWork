@@ -23,21 +23,25 @@ protected:
     //возможность сделать multijump(возвращает значение для multijump)
     bool multijumptr = false;
 
-    virtual void CheckMoveDirection();
+    virtual void CheckSprintDirection();
     virtual void Move(const float time);
     //попробовать оптимизировать
     virtual void Shift();
     virtual void DisableHorizontalMovement();
 
-public:
-   
-    //смещение персонажа
-    float offsetX = 0, offsetY = 0;
     bool playerOnGround = false;
 
+   
+public:
+    //смещение персонажа
+    float offsetX = 0, offsetY = 0;
+    
+
+    //связь с jumper
     bool CanMultiJump();
     void SetMultiJump(const bool state);
 
+    //направление движения
     void SetLeftDirection();
     void SetRightDirection();
 

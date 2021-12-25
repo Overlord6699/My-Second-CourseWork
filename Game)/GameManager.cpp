@@ -1,5 +1,13 @@
 #include "GameManager.h"
 
+void GameManager::RespawnEnemies()
+{
+    for (int i = 0; i < enemies.size(); i++) {
+        enemies[i].SetMoveState(true);
+        enemies[i].Respawn();
+    }
+}
+
 float GameManager::GetFallSpeed()
 {
     return freeFallSpeed;
@@ -42,7 +50,6 @@ int GameManager::GetPlayerSpawnPointY()
     return spawnPointY;
 }
 
-//EXPERIENCE
 int GameManager::GetCurrentLevel()
 {
     int level = 0;
@@ -80,6 +87,7 @@ void GameManager::GrantXp(const int xp, Leveler& player)
 {
     int currLevel = GetCurrentLevel();
     experience += xp;
+
     if (currLevel < GetCurrentLevel())
     {
         OnLevelUp(player);
@@ -89,7 +97,7 @@ void GameManager::GrantXp(const int xp, Leveler& player)
 void GameManager::OnLevelUp(Leveler& player)
 {
     player.OnLevelUp();
-    OnHitpointChange(3000);
+    OnHitpointChange(FULL_HP);
 }
 
 void GameManager::OnScoreChange(const int score)
@@ -120,7 +128,7 @@ void GameManager::ProcessMap(Mover& player, RenderWindow& gameWindow, RectangleS
     for (int i = 0; i < Map::H; i++)
         for (int j = 0; j < Map::W; j++)
         {
-
+            //позволяет повторять уровень
             if (map.TileMap[i][j] == 'O') {
                 playerRect.setFillColor(Color::Transparent);
                 playerRect.setPosition(j * 32 - player.offsetX, i * 32 - player.offsetY);
@@ -190,18 +198,41 @@ void GameManager::GetEnemySpawnPoint(int& enemyX, int& enemyY, Map& map)
             }
 }
 
-void GameManager::CreateEnemies(vector<AbstractNoJumpAnimEnemy>& enemies, Texture& image,
+void GameManager::CreateCustomEnemies(Texture& image,
     const AbstractEnemyFactory& factory, Map& map)
 {
     int enemyX, enemyY;
 
-    for (int i = 0; i < NUM_OF_NOJUMP_ENEMIES; i++) {
-        GetEnemySpawnPoint(enemyX, enemyY, map);
+    if (curNumberOfEnemies < NUM_OF_NOJUMP_ENEMIES) {
+        int dif = NUM_OF_NOJUMP_ENEMIES - curNumberOfEnemies;
 
-        AbstractNoJumpAnimEnemy* enemy = factory.CreateNoJumpEnemy(image,
-            NOJUMP_ENEMY_DISTANCE, NOJUMP_ENEMY_OFFSET, enemyX, enemyY);
+        for (int i = 0; i < dif; i++) {
+            GetEnemySpawnPoint(enemyX, enemyY, map);
 
-        enemies.push_back(*enemy);
+            AbstractNoJumpAnimEnemy* enemy = factory.CreateNoJumpEnemy(image,
+                NOJUMP_ENEMY_DISTANCE, NOJUMP_ENEMY_OFFSET, enemyX, enemyY);
+
+            enemies.push_back(*enemy);
+            curNumberOfEnemies++;
+        }
+    }
+}
+
+void GameManager::CreateEnemies(Texture& image, Map& map)
+{
+    NoJumpEnemyFactory* f = new NoJumpEnemyFactory();
+
+    CreateCustomEnemies(image, *f, map);
+}
+
+void GameManager::SpawnNewEnemies(Texture& image, Map& map)
+{
+    int level = GetCurrentLevel();
+
+    //добавляем новых противников
+    if (level < numOfEnemies.size()) {
+        NUM_OF_NOJUMP_ENEMIES = numOfEnemies[level];
+        CreateEnemies(image, map);
     }
 }
 
@@ -221,7 +252,6 @@ void GameManager::SaveState(Mover& player)
     std::ofstream out("saves//save.txt");
     if (out.is_open())
     {
-
         out << spawnPointX << "\n";
         out << spawnPointY << "\n";
         out << playerScore << "\n";
@@ -251,7 +281,7 @@ void GameManager::LoadState(Mover& player)
             if (f == 2)
                 playerScore = stoi(line);
             if (f == 3)
-                speed = stof(line);
+                speed = stoi(line);
             if (f == 4)
                 jumpCooldawn1 = stof(line);
             if (f == 5)
@@ -269,7 +299,7 @@ void GameManager::LoadState(Mover& player)
 }
 
 
-void GameManager::Respawn(GameManager& gameManager, Spawner& player)
+void GameManager::Respawn(Spawner& player)
 {
     player.Respawn();
 }

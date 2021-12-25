@@ -75,7 +75,7 @@ void Player::Update(const float time, Player& player, vector<AbstractNoJumpAnimE
 
         Move(time);
 
-        CheckMoveDirection();
+        CheckSprintDirection();
 
         //при пересечении с противником
         Collision(time, enemies, gameManager, musicMaster);
@@ -97,7 +97,7 @@ void Player::Update(const float time, Player& player, vector<AbstractNoJumpAnimE
         if (!playerOnGround)
         {            
             //расчёт скорости падения
-            Fall(time, gameManager);
+            CalculateFallSpeed(time, gameManager);
 
             if (!player.IsAttacking()) {
                 //прыжок вверх
@@ -109,7 +109,6 @@ void Player::Update(const float time, Player& player, vector<AbstractNoJumpAnimE
                     ProcessFallDirection();
                 }
             }
-
         }
         else {
             gameManager.jumpCooldawn = gameManager.jumpCooldawn1;
@@ -153,8 +152,8 @@ void Player::MoveWithSound(const float time, Map& map, MusicMaster& musMaster)
 {
     if (map.blockHP < 0 && playerOnGround && !IsAttacking())
     {
-        musMaster.PlayNeededSound(musMaster.runsound);
-        map.blockHP = map.MAX_BLOCK_HP;
+        musMaster.PlayNeededSound(musMaster.RunSound());
+        //map.blockHP = map.MAX_BLOCK_HP;
     }
 }
 
@@ -165,8 +164,8 @@ void Player::Die(GameManager& gameManager, MusicMaster& musMaster)
     DisableMovement();
 
     //SetSpriteTextureRect(680, 680, 58,78);
-    musMaster.PauseNeededSound(musMaster.runsound);
-    musMaster.PlayNeededSound(musMaster.deathsound);
+    musMaster.PauseNeededSound(musMaster.RunSound());
+    musMaster.PlayNeededSound(musMaster.DeathSound());
 
     gameManager.OnPlayerDie();
 }
@@ -201,12 +200,12 @@ void Player::CheckGround(const int dir, const float time, GameManager& gameManag
                 if (dx > 0 && dir == 0) {
                     rect.left = j * Map::BLOCK_SIZE - rect.width;
                     dx = 0;
-                    musicMaster.PauseRunSound();
+                    musicMaster.PauseNeededSound(musicMaster.RunSound());
                 }
                 if (dx < 0 && dir == 0) {
                     rect.left = (j + 1) * Map::BLOCK_SIZE;
                     dx = 0;
-                    musicMaster.PauseRunSound();
+                    musicMaster.PauseNeededSound(musicMaster.RunSound());
                 }
                 if (dy > 0 && dir == 1) {
                     rect.top = i * Map::BLOCK_SIZE - rect.height;
@@ -290,13 +289,28 @@ void Player::CheckGround(const int dir, const float time, GameManager& gameManag
         }
 }
 
+bool Player::CheckDistance(const FloatRect& enemyRect, const bool checkForPlayer = true)
+{
+    if (checkForPlayer) {
+        if (abs(enemyRect.left - rect.left) < Map::BLOCK_SIZE / 2 &&
+            abs(enemyRect.top - rect.top) < Map::BLOCK_SIZE / 2)
+            return true;
+    }
+    else //для противника расстояние немного больше. Его также можно увеличивать по ходу игры
+    {
+        if (abs(enemyRect.left - rect.left) < Map::BLOCK_SIZE / 2 + 20 &&
+            abs(enemyRect.top - rect.top) < Map::BLOCK_SIZE / 2 + 20)
+            return true;
+    }
+
+    return false;
+}
+
 void Player::Collision(const float time, vector<AbstractNoJumpAnimEnemy>& enemies, GameManager& gameManager, MusicMaster& musMaster)
 {
     for (int i = 0; i < enemies.size(); i++)
     {
-
-        if ((abs(enemies[i].rect.left - rect.left) < Map::BLOCK_SIZE / 2 + 20 &&
-            abs(enemies[i].rect.top - rect.top) < Map::BLOCK_SIZE / 2 + 20 &&
+        if ((CheckDistance(enemies[i].rect, false) &&
             !attack && enemies[i].IsAlive() && isAlive) || enemies[i].IsAttacking())
         {
             if (enemies[i].rect.left > rect.left)
@@ -319,13 +333,11 @@ void Player::Collision(const float time, vector<AbstractNoJumpAnimEnemy>& enemie
 
         //убили противника
         if (enemies[i].IsAlive())
-            if (abs(enemies[i].rect.left - rect.left) < Map::BLOCK_SIZE / 2 &&
-                abs(enemies[i].rect.top - rect.top) < Map::BLOCK_SIZE / 2 &&
-                attack)
+            if (CheckDistance(enemies[i].rect) && attack)
             {
                 enemies[i].Die();
                 gameManager.OnScoreChange(10);
-
+                gameManager.GrantXp(10, *this);
             }
     }
 }

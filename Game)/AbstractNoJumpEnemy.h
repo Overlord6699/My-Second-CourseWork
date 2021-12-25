@@ -18,8 +18,8 @@ protected:
 	const float ENEMY_SPEED = 0.01;
 
 	//ddx - ускорение и замедление
-	//ограничители
 	float ddx;
+	//ограничитель
 	float distance;
 private:
 	void LayDown(const float playerOffsetX, const float playerOffsetY) {
@@ -84,7 +84,7 @@ public:
 	};
 
 	void Animate(const int id) {
-			animator->Animate(right, sprite, id);
+		animator->Animate(right, sprite, id);
 	};
 	bool ProcessAnimation(const float time, const int id) {
 		return animator->ProcessAnim(time, NORMAL_SPEED, id);

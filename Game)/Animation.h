@@ -3,9 +3,12 @@
 
 class Animation
 {
-	//AnimStrategy* _strategy;
 	vector<AnimStrategy*> _strategy;
+	//идёт ли анимация
 	bool anima = false;
+	//игрок или противник
+	//чтобы создавать один класс с разными анимациями
+	//в зависимости от того, кому она принадлежит
 	bool isForPlayer = true;
 public:
 	bool IsAnimated()
@@ -36,10 +39,12 @@ public:
 	{
 		anima = state;
 	}
+
 	virtual bool ProcessAnim(const float time, const float speed, const int id)
 	{
 		return this->_strategy[id]->ProcessAnimation(time, speed, isForPlayer);
 	}
+
 	virtual void Animate(const bool right, Sprite& sprite, const int id)
 	{
 		this->_strategy[id]->Animate(right, sprite);
